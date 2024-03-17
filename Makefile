@@ -1,0 +1,1 @@
+ping: ansible all -i inventory.ini -u maletinchess -m ping
