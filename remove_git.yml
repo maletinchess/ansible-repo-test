@@ -1,0 +1,8 @@
+- hosts: appservers
+  remote_user: maletinchess
+  tasks:
+    - name: uninstall git
+      ansible.builtin.apt:
+        name: git
+        state: absent
+      become: yes
