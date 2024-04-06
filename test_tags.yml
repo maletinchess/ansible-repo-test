@@ -1,0 +1,34 @@
+- hosts: appservers
+  remote_user: maletinchess
+  tasks:
+    - name: install git
+      ansible.builtin.apt:
+        name: git
+        state: present
+        update_cache: yes
+      become: yes
+      tags:
+        - install_git
+    - name: install node
+      ansible.builtin.apt:
+        name: node
+        state: present
+        update_cache: yes
+      become: yes
+      tags:
+        - install_node
+    - name: create users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+        createhome: yes
+      with_items:
+        - arya
+        - sansa
+        - tirion
+      become: yes
+      tags:
+        - create_users
+
+      
+        
